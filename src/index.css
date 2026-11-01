@@ -1,0 +1,1210 @@
+@import "tailwindcss";
+
+/* REMOVE ALL WHITE SPACE FROM NAVBAR */
+body {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+header {
+  margin: 0 !important;
+  border-radius: 0 !important;
+  /* Remove rounded corners */
+}
+
+.container {
+  border-radius: 0 !important;
+  /* Remove rounded corners from container */
+  margin: 0 !important;
+}
+
+.dashboard-header {
+  margin: 0 !important;
+  border-radius: 0 !important;
+}
+
+/* Global heading styles */
+h1:not(.calculator-main-heading):not(.dashboard-main-heading),
+h2:not(.fund-title):not(.calculate-nav-heading),
+h3:not(.stock-slider-symbol):not(.dashboard-stock-prices-heading):not(.stock-slider *):not(.active-companies-heading),
+h4:not(.stock-slider *),
+h5:not(.stock-slider *),
+h6:not(.stock-slider *),
+.fund-title,
+.calculator-setup-heading,
+.calculator-results-heading,
+.calculate-nav-heading,
+.active-companies-heading,
+.dashboard-stock-prices-heading {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif !important;
+  font-weight: 700 !important;
+  font-size: clamp(18px, 3vw, 20px) !important;
+  line-height: 1.4 !important;
+  color: #111827 !important;
+  margin: 0 !important;
+}
+
+/* 🔥 SPECIFIC HEADING SIZE OVERRIDES 🔥 */
+.calculate-nav-heading {
+  font-size: clamp(16px, 3vw, 30px) !important;
+  margin-bottom: clamp(10px, 2vw, 1px) !important;
+  /* Reduced from 20-25px to 10-15px */
+  padding-bottom: clamp(6px, 1.5vw, 2px) !important;
+  /* Reduced from 8-10px to 6-8px */
+}
+
+.active-companies-heading {
+  font-size: clamp(18px, 3vw, 20px) !important;
+  margin-top: clamp(8px, 1.5vw, 6px) !important;
+  /* Reduced from 15-20px to 8-12px */
+  margin-bottom: clamp(10px, 2vw, 14px) !important;
+  /* Reduced from 12-18px to 10-14px */
+}
+
+/* Calculator fund badge base styles */
+.calculator-fund-badge {
+  padding: 10px 20px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: white;
+  display: inline-block;
+  margin-right: 10px;
+}
+
+/* Al Meezan badge - charcoal blue */
+.badge-al-meezan {
+  background: #1F2433;
+  /* Updated to charcoal blue */
+}
+
+/* Energy badge - charcoal blue */
+.badge-energy {
+  background: #1F2433;
+  /* Updated to charcoal blue */
+}
+
+/* Dashboard main header - bigger size and white text */
+.dashboard-main-heading {
+  font-size: clamp(22px, 5vw, 22px) !important;
+  font-weight: 700 !important;
+  line-height: 1.3 !important;
+  color: white !important;
+}
+
+/* Dashboard center group styling */
+.dashboard-center-group {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.dashboard-welcome-text {
+  color: white;
+  font-size: 25px;
+  font-weight: 500;
+  padding-left: 240px;
+  /* RESTORED: Padding added back as requested by the user */
+}
+
+/* Calculator main header - bigger size */
+/* Calculator main header - bigger size */
+.calculator-main-heading {
+  font-size: clamp(22px, 3.5vw, 32px) !important;
+  font-weight: 600 !important;
+  line-height: 1.3 !important;
+}
+
+/* Mobile ke liye chota font - Sirf yeh add karo */
+@media (max-width: 768px) {
+  .calculator-main-heading {
+    font-size: clamp(14px, 3.5vw, 18px) !important;
+  }
+}
+
+/* Stock slider symbol - keep original styling (FIXED FONT) */
+/* Stock slider symbol - keep original styling (FIXED FONT & BOLD) */
+.stock-slider-symbol {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif !important;
+  /* FIXED FONT */
+  font-weight: 700 !important;
+  /* UPDATED to Bold (700) */
+  line-height: inherit;
+}
+
+/* Keep stock slider elements with the main font family */
+.stock-slider *,
+.stock-slider-item *,
+.stock-slider strong,
+.stock-slider h1,
+.stock-slider-item h1 {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif !important;
+  /* FIXED FONT */
+  font-weight: 400 !important;
+  font-size: inherit !important;
+  line-height: inherit !important;
+  color: inherit !important;
+  margin: inherit !important;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, white 0%, #e0e0e0 100%);
+  min-height: 100vh;
+  padding: clamp(5px, 2vw, 20px);
+  width: 100%;
+  overflow-x: hidden;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  background: white;
+  border-radius: clamp(8px, 1.5vw, 15px);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  width: 100%;
+}
+
+/* CHARCOAL BLUE NAVBAR THEME */
+header {
+  background: #1F2433 !important;
+  /* Charcoal Blue */
+  background: linear-gradient(135deg, #1F2433 0%, #2D3447 100%) !important;
+  color: white;
+  padding: clamp(15px, 3vw, 30px);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: clamp(10px, 2vw, 15px);
+}
+
+header h1 {
+  font-size: clamp(18px, 3vw, 20px) !important;
+  flex: 1 1 100%;
+  order: 1;
+}
+
+.calculator-header-right {
+  display: flex;
+  align-items: center;
+  gap: clamp(8px, 2vw, 12px);
+  flex-wrap: wrap;
+  order: 2;
+  width: 100%;
+  justify-content: flex-start;
+}
+
+@media (min-width: 769px) {
+  header h1 {
+    flex: 1 1 auto;
+    order: 0;
+  }
+
+  .calculator-header-right {
+    width: auto;
+    order: 0;
+    justify-content: flex-end;
+  }
+}
+
+.admin-link {
+  background: white;
+  color: #1F2433;
+  /* Updated to charcoal blue */
+  padding: clamp(8px, 1.5vw, 10px) clamp(16px, 3vw, 20px);
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: clamp(12px, 2vw, 14px);
+  transition: transform 0.2s;
+  white-space: nowrap;
+}
+
+.admin-link:hover {
+  transform: scale(1.05);
+  background: #f8f9ff;
+}
+
+.calculator-section {
+  padding: clamp(20px, 4vw, 40px) clamp(15px, 3vw, 40px);
+}
+
+.calculator-section h2 {
+  margin-bottom: clamp(20px, 3vw, 30px);
+}
+
+.companies-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(clamp(220px, 30vw, 270px), 1fr));
+  gap: clamp(15px, 2vw, 20px);
+  margin-bottom: clamp(20px, 3vw, 30px);
+  margin-top: clamp(20px, 3vw, 18px);
+}
+
+.company-card {
+  border: 2px solid #e0e0e0;
+  border-radius: clamp(8px, 1.2vw, 10px);
+  padding: clamp(12px, 2vw, 15px);
+  transition: all 0.3s;
+  cursor: pointer;
+}
+
+.company-card:hover {
+  border-color: #1F2433;
+  /* Updated to charcoal blue */
+  background: #f8f9ff;
+}
+
+/* CALCULATE NAV COMPANIES KA TEXT - CHARCOAL BLUE */
+.company-card strong {
+  color: #1F2433 !important;
+  /* Charcoal blue instead of purple */
+  font-size: 18px;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.weight {
+  background: #1F2433;
+  /* Updated to charcoal blue */
+  color: white;
+  padding: clamp(4px, 0.8vw, 5px) clamp(8px, 1.5vw, 10px);
+  border-radius: 5px;
+  font-size: clamp(11px, 1.8vw, 12px);
+  align-self: flex-start;
+  margin-top: clamp(8px, 1.5vw, 10px);
+}
+
+.btn-primary {
+  background: #1F2433;
+  /* Updated to charcoal blue */
+  background: linear-gradient(135deg, #1F2433 0%, #2D3447 100%);
+  color: white;
+  border: none;
+  padding: clamp(12px, 2vw, 15px) clamp(30px, 5vw, 40px);
+  font-size: clamp(16px, 2.5vw, 18px);
+  border-radius: clamp(6px, 1vw, 8px);
+  cursor: pointer;
+  width: 100%;
+  font-weight: bold;
+  transition: transform 0.2s;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 20px rgba(31, 36, 51, 0.4);
+}
+
+.loading {
+  text-align: center;
+  padding: clamp(20px, 4vw, 40px);
+  color: #1F2433;
+  /* Updated to charcoal blue */
+  font-size: clamp(16px, 2.5vw, 18px);
+}
+
+.results-section {
+  padding: clamp(20px, 4vw, 40px) clamp(15px, 3vw, 40px);
+  background: #f8f9fa;
+}
+
+.nav-display {
+  background: #1F2433;
+  /* Updated to charcoal blue */
+  background: linear-gradient(135deg, #1F2433 0%, #2D3447 100%);
+  color: white;
+  padding: clamp(15px, 3vw, 30px);
+  border-radius: clamp(10px, 2vw, 15px);
+  margin: clamp(15px, 2.5vw, 20px) 0;
+  text-align: center;
+  overflow: hidden;
+  word-wrap: break-word;
+}
+
+.nav-value {
+  font-size: clamp(24px, 5vw, 48px);
+  font-weight: bold;
+  margin: clamp(8px, 1.5vw, 10px) 0;
+  word-break: break-word;
+  line-height: 1.2;
+}
+
+.prices-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(clamp(200px, 30vw, 250px), 1fr));
+  gap: clamp(10px, 2vw, 15px);
+  margin: clamp(15px, 2.5vw, 20px) 0;
+}
+
+.price-card {
+  background: white;
+  border: 2px solid #e0e0e0;
+  border-radius: clamp(8px, 1.2vw, 10px);
+  padding: clamp(12px, 2vw, 15px);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.auto-refresh-status {
+  display: inline-block;
+  padding: clamp(4px, 0.8vw, 5px) clamp(10px, 2vw, 15px);
+  border-radius: 20px;
+  font-size: clamp(12px, 2vw, 14px);
+  margin-left: clamp(0px, 1.5vw, 10px);
+}
+
+.status-active {
+  background: #1F2433;
+  /* Updated to charcoal blue */
+  color: white;
+}
+
+.status-inactive {
+  background: #6c757d;
+  color: white;
+}
+
+.form-group {
+  margin-bottom: clamp(15px, 2.5vw, 20px);
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: clamp(4px, 0.8vw, 5px);
+  color: #333;
+  font-weight: bold;
+  font-size: clamp(13px, 2vw, 14px);
+}
+
+.form-group input {
+  width: 100%;
+  padding: clamp(10px, 1.8vw, 12px);
+  border: 2px solid #e0e0e0;
+  border-radius: 5px;
+  font-size: clamp(14px, 2.2vw, 16px);
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: #1F2433;
+  /* Updated to charcoal blue */
+}
+
+/* Admin Table Fix */
+.admin-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: clamp(15px, 2.5vw, 20px);
+  font-size: clamp(13px, 2vw, 14px);
+  background: white;
+}
+
+/* Table headings (S.No, Company Name, etc.) ka left padding control */
+.admin-table th {
+  padding: clamp(15px, 2vw, 16px) clamp(20px, 3vw, 40px);
+  text-align: left;
+  border-bottom: 2px solid #e5e7eb;
+  font-weight: 700;
+  color: #111827;
+  font-size: clamp(13px, 2vw, 14px);
+
+  /* ← Thoda left shift */
+}
+
+/* Table cells ka left padding control */
+.admin-table td {
+  padding: clamp(12px, 2vw, 16px) clamp(20px, 3vw, 26px);
+  text-align: left;
+  border-bottom: 1px solid #e5e7eb;
+  color: #374151;
+  font-size: clamp(13px, 2vw, 14px);
+
+  /* ← Thoda left shift */
+}
+
+/* Action buttons column ko bhi adjust */
+.admin-table td:last-child {
+
+  /* ← Is column ka bhi left padding */
+}
+
+.admin-table tbody tr:hover {
+  background: #f9fafb;
+}
+
+/* Company Management Section - Minimal padding for full width table */
+.company-management-container {
+  background: white;
+  border-radius: clamp(8px, 1.5vw, 12px);
+  /* Reduced top padding from clamp(5px, 2.5vw, 10px) to a flat 2px to remove void */
+  padding: 2px clamp(16px, 2.5vw, 20px) clamp(12px, 2vw, 16px) clamp(16px, 2.5vw, 20px);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  border: 2px solid #e0e0e0;
+  margin-top: clamp(24px, 4vw, 32px);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.btn-add {
+  background: #1F2433;
+  /* Updated to charcoal blue */
+  color: white;
+  padding: clamp(6px, 1.2vw, 8px) clamp(14px, 2.5vw, 40px);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: clamp(12px, 2vw, 14px);
+  font-weight: 600;
+  /* Button ko neeche lane ke liye */
+  margin-top: 4px;
+  /* ADD THIS LINE - Adjust value as needed */
+  margin-bottom: 0;
+  transition: all 0.2s;
+  white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Adjusting heading margin specifically within the management section */
+.company-management-container h2 {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* --- FIX FOR ACTION BUTTONS: Edit, Deactivate, Delete side-by-side --- */
+.admin-table td:last-child {
+  display: flex;
+  align-items: center;
+  /* UPDATED: Reduced spacing/gap */
+  gap: clamp(2px, 0.5vw, 4px);
+  white-space: nowrap;
+  /* Critical: Prevents the buttons from wrapping onto a new line inside the cell */
+  justify-content: flex-start;
+}
+
+/* -------------------------------------------------------------------------- */
+
+/* Mobile responsive table */
+@media (max-width: 768px) {
+  .admin-table {
+    display: block;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    white-space: nowrap;
+  }
+
+  .admin-table thead {
+    display: table-header-group;
+  }
+
+  .admin-table th,
+  .admin-table td {
+    white-space: nowrap;
+    min-width: 80px;
+  }
+
+  .admin-table th:first-child,
+  .admin-table td:first-child {
+    position: sticky;
+    left: 0;
+    background: white;
+    /* FIXED: Changed from grey to white */
+    z-index: 10;
+  }
+
+  .admin-table thead th:first-child {
+    background: #f3f4f6;
+    /* Matches the header row background */
+    z-index: 11;
+  }
+}
+
+/* Button styling in table - FIXED SIZE FOR BUTTONS */
+.admin-table .btn-small {
+  /* UPDATED: Reduced fixed size */
+  width: 60px;
+  height: 25px;
+  padding: 0;
+  margin: 0 clamp(1px, 0.3vw, 3px);
+  /* Adjusted margin slightly */
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  /* UPDATED: Slightly reduced font size */
+  font-size: clamp(10px, 1.5vw, 11px);
+  font-weight: 500;
+  /* Use flex to center text inside the fixed box */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  line-height: 1.2;
+  transition: all 0.2s;
+}
+
+.admin-table .btn-small:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.btn-small {
+  padding: clamp(2px, 0.5vw, 3px) clamp(4px, 0.8vw, 6px);
+  margin: 0 clamp(2px, 0.5vw, 5px);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: clamp(11px, 1.8vw, 12px);
+  min-width: clamp(70px, 13vw, 85px);
+  display: inline-block;
+  text-align: center;
+}
+
+.btn-edit {
+  background: #ffc107;
+  color: #000;
+  font-weight: 600;
+}
+
+.btn-edit:hover {
+  background: #ffca28;
+}
+
+.btn-delete {
+  background: #dc3545;
+  color: white;
+  font-weight: 600;
+}
+
+.btn-delete:hover {
+  background: #e04555;
+}
+
+.btn-add {
+  background: #1F2433;
+  /* Updated to charcoal blue */
+  color: white;
+  padding: clamp(6px, 1.2vw, 8px) clamp(14px, 2.5vw, 18px);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: clamp(12px, 2vw, 14px);
+  font-weight: 600;
+  margin-bottom: clamp(15px, 2.5vw, 20px);
+  transition: all 0.2s;
+  white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-add:hover {
+  background: #2D3447;
+  /* Darker charcoal blue */
+  transform: translateY(-1px);
+  box-shadow: 0 3px 12px rgba(31, 36, 51, 0.3);
+}
+
+.login-container {
+  max-width: clamp(300px, 80vw, 400px);
+  margin: clamp(20px, 15vw, 100px) auto;
+  background: white;
+  padding: clamp(20px, 5vw, 40px);
+  border-radius: clamp(10px, 2vw, 15px);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+}
+
+/* ========== DASHBOARD RESPONSIVE CLASSES ========== */
+
+/* Header Right Component - NAV Display */
+.header-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: clamp(2px, 0.5vw, 4px);
+  text-align: right;
+  flex-shrink: 0;
+  min-width: clamp(100px, 20vw, 150px);
+}
+
+.header-right-price {
+  font-size: clamp(18px, 3.5vw, 24px);
+  font-weight: bold;
+  color: #111827;
+  line-height: 1.2;
+}
+
+.header-right-change {
+  font-weight: 500;
+  font-size: clamp(10px, 1.8vw, 12px);
+  line-height: 1.3;
+  white-space: nowrap;
+}
+
+.header-right-updated {
+  color: #6b7280;
+  font-size: clamp(9px, 1.6vw, 12px);
+  font-weight: 600;
+  line-height: 1.3;
+  white-space: nowrap;
+}
+
+/* CHARCOAL BLUE DASHBOARD HEADER */
+.dashboard-header {
+  background: #1F2433 !important;
+  /* Charcoal Blue */
+  background: linear-gradient(135deg, #1F2433 0%, #2D3447 100%) !important;
+  padding: clamp(12px, 2.5vw, 20px) clamp(15px, 4vw, 40px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.dashboard-header-content {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: clamp(20px, 3vw, 30px);
+  flex-wrap: wrap;
+}
+
+.dashboard-title {
+  color: white !important;
+  margin: 0;
+  font-size: clamp(18px, 3vw, 20px) !important;
+  font-weight: 700 !important;
+  order: 1;
+  flex: 0 0 auto;
+}
+
+.dashboard-user-section {
+  display: flex;
+  align-items: center;
+  /* FIXED: Use flex properties for proper centering and alignment instead of position: relative/absolute */
+  justify-content: space-between;
+  /* Space between center group and button */
+  gap: clamp(10px, 2.5vw, 20px);
+  flex: 1;
+  /* Takes up available space */
+  order: 2;
+  position: static;
+  /* Fixed from relative */
+}
+
+.dashboard-user-section .center-group {
+  /* Welcome Text + Badge */
+  /* FIXED: Removed absolute positioning hack */
+  position: static;
+  transform: none;
+  display: flex;
+
+  align-items: center;
+  gap: clamp(8px, 1.5vw, 12px);
+  white-space: nowrap;
+  margin: 0 auto;
+  /* This centers the group within the user section on desktop */
+}
+
+.dashboard-user-section .fund-type-badge {
+  padding: 6px 12px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: white;
+}
+
+.dashboard-user-section .welcome-text {
+  color: white;
+  font-size: clamp(14px, 2.5vw, 18px);
+  font-weight: 700;
+
+}
+
+/* LOGOUT BUTTON - COMPLETELY WHITE */
+.dashboard-user-section button {
+  padding: clamp(8px, 1.5vw, 10px) clamp(16px, 3vw, 20px);
+  font-size: clamp(12px, 2vw, 14px);
+  background: white !important;
+  /* WHITE BACKGROUND */
+  color: #1F2433 !important;
+  /* CHARCOAL BLUE TEXT */
+  border: none;
+  border-radius: clamp(6px, 1vw, 8px);
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s;
+  /* FIXED: Removed margin-left: auto as justify-content handles spacing now */
+  flex: 0 0 auto;
+}
+
+.dashboard-user-section button:hover {
+  background: #f8f9ff !important;
+  /* Light blue on hover */
+  color: #1F2433 !important;
+  /* Keep charcoal blue text */
+  transform: scale(1.05);
+}
+
+@media (max-width: 768px) {
+  .dashboard-header-content {
+    /* Stack main blocks (Title and User Section) */
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .dashboard-title {
+    text-align: center;
+  }
+
+  .dashboard-user-section {
+    /* FIXED: Keep elements inside User Section side-by-side (aik dosre ke samne) */
+    flex-direction: row;
+    justify-content: space-between;
+    gap: clamp(8px, 2vw, 12px);
+    width: 100%;
+    /* Take full width of parent column */
+    /* Remove unnecessary align-items: center; for better flow */
+  }
+
+  .dashboard-user-section .center-group {
+    position: static;
+    transform: none;
+    order: 1;
+    /* Align welcome group to the left side of the user section on mobile */
+    justify-content: flex-start;
+    margin: 0;
+    /* Remove auto margin */
+  }
+
+  .dashboard-user-section button {
+    order: 2;
+    /* Push button to the right end of the user section */
+    margin-left: auto;
+    align-self: center;
+    background: white !important;
+    /* Mobile ke liye bhi white */
+    color: #1F2433 !important;
+    /* Mobile ke liye bhi charcoal blue text */
+  }
+
+  .dashboard-welcome-text {
+    font-size: clamp(16px, 3.5vw, 18px);
+    /* Adjust font size for mobile */
+    padding-left: 0;
+    /* REMOVED: Fixed padding is only needed for desktop centering */
+  }
+}
+
+/* ========== CONSISTENT BORDERS FOR ALL CONTAINERS ========== */
+/* Fund Card - Al Meezan NAV Container */
+.fund-card {
+  background: white;
+  border-radius: clamp(8px, 1.5vw, 12px);
+  padding: clamp(12px, 3vw, 24px);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  border: 2px solid #e0e0e0;
+  margin-bottom: clamp(16px, 3vw, 24px);
+}
+
+.fund-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+  gap: clamp(16px, 3vw, 24px);
+}
+
+@media (max-width: 768px) {
+  .fund-header {
+    flex-wrap: wrap;
+  }
+
+  .chart-container {
+    width: 100%;
+    overflow-x: hidden;
+  }
+
+  .returns-grid {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .admin-table {
+    display: block;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .admin-table th,
+  .admin-table td {
+    white-space: nowrap;
+  }
+}
+
+.fund-left {
+  display: flex;
+  align-items: start;
+  gap: clamp(10px, 2vw, 16px);
+  flex: 1;
+  min-width: 0;
+}
+
+/* CALCULATOR KA AM WALA LOGO - CHARCOAL BLUE */
+.fund-avatar {
+  width: clamp(40px, 8vw, 64px);
+  height: clamp(40px, 8vw, 64px);
+  border-radius: 50%;
+  background: #1F2433 !important;
+  /* CHARCOAL BLUE */
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  font-size: clamp(14px, 2.5vw, 18px) !important;
+  font-weight: 600 !important;
+  color: white !important;
+  /* White text for contrast */
+  text-transform: uppercase !important;
+  flex-shrink: 0 !important;
+}
+
+.fund-info {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(3px, 0.5vw, 4px);
+}
+
+.fund-title {
+  margin: 0 !important;
+  font-size: clamp(18px, 3vw, 20px) !important;
+  font-weight: 700 !important;
+  color: #111827 !important;
+  line-height: 1.3;
+}
+
+.fund-symbol {
+  font-size: clamp(11px, 1.8vw, 14px);
+  color: #6b7280;
+}
+
+/* Returns Grid */
+/* Returns Grid */
+.returns-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: clamp(6px, 1.5vw, 12px);
+}
+
+.return-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: clamp(6px, 1vw, 8px);
+  padding: clamp(6px, 1.2vw, 8px) clamp(8px, 1.5vw, 12px);
+  min-width: clamp(60px, 12vw, 90px);
+  height: clamp(50px, 10vw, 80px);
+  font-weight: 500;
+  flex: 0 0 auto;
+  /* Background and color will come from inline styles */
+}
+
+.return-box-label {
+  font-size: clamp(10px, 1.8vw, 14px);
+  text-transform: uppercase;
+}
+
+.return-box-value {
+  font-size: clamp(12px, 2.2vw, 16px);
+}
+
+/* Info Grid */
+.info-grid {
+  background: #f9fafb;
+  margin-top: clamp(16px, 3vw, 24px);
+  border-radius: clamp(6px, 1vw, 8px);
+  padding: clamp(10px, 2vw, 16px);
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(clamp(150px, 25vw, 200px), 1fr));
+  gap: clamp(8px, 1.5vw, 12px) clamp(16px, 4vw, 32px);
+  font-size: clamp(12px, 2vw, 14px);
+}
+
+.info-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: clamp(6px, 1vw, 8px);
+}
+
+/* Stock Prices Grid - FIXED: Added border */
+.stock-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(clamp(180px, 30vw, 250px), 1fr));
+  gap: clamp(10px, 2vw, 16px);
+  padding: clamp(12px, 2.5vw, 20px);
+  background: white;
+  border-radius: clamp(8px, 1.5vw, 12px);
+  border: 2px solid #e0e0e0;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  margin-bottom: clamp(16px, 3vw, 24px);
+}
+
+.stock-card {
+  background: white;
+  border-radius: clamp(8px, 1.5vw, 12px);
+  padding: clamp(12px, 2.5vw, 20px);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  border: 2px solid #e0e0e0;
+}
+
+.stock-symbol {
+  color: #1F2433;
+  /* Updated to charcoal blue */
+  font-size: clamp(14px, 2.5vw, 18px);
+  display: block;
+  margin-bottom: clamp(3px, 0.5vw, 4px);
+  font-weight: bold;
+}
+
+.stock-name {
+  margin: clamp(3px, 0.5vw, 4px) 0;
+  color: #6b7280;
+  font-size: clamp(11px, 1.8vw, 14px);
+}
+
+.stock-price {
+  font-size: clamp(18px, 3.5vw, 24px);
+  font-weight: bold;
+  margin: clamp(10px, 1.8vw, 12px) 0;
+  color: #111827;
+}
+
+/* WEIGHT BADGES - CHANGED FROM GREEN TO CHARCOAL BLUE */
+/* WEIGHT BADGES - CHARCOAL BLUE like header */
+.weight-green {
+  background: #1F2433 !important;
+  /* Charcoal blue matching header */
+  color: white !important;
+  padding: clamp(4px, 0.8vw, 5px) clamp(8px, 1.5vw, 10px);
+  border-radius: 5px;
+  font-size: clamp(11px, 1.8vw, 12px);
+  align-self: flex-start;
+  margin-top: clamp(8px, 1.5vw, 10px);
+}
+
+/* ========== FIX: RANGE SELECTOR RESPONSIVENESS (for ALL, CR buttons) ========== */
+.range-buttons-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: clamp(6px, 1.5vw, 10px);
+  padding: clamp(8px, 2vw, 12px) 0;
+}
+
+.range-buttons-container button {
+  flex-shrink: 1;
+  min-width: 40px;
+}
+
+/* ========== RECHARTS MOBILE FOCUS BORDER FIX (Global CSS) ========== */
+.chart-container,
+.chart-container *,
+.chart-container svg,
+.chart-container div[style] {
+  outline: none !important;
+  -webkit-tap-highlight-color: transparent !important;
+}
+
+.chart-container:focus,
+.chart-container *:focus {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+/* Admin new class ko bhi update karna */
+.admin-new {
+  padding-left: 25px !important;
+  /* ← Yeh line add karo takke headings ka padding consistent rahe */
+}
+
+
+
+/* Calculate NAV and Active Companies Headings */
+
+
+/* Stock Index Selector Button - Add padding to text */
+button[aria-label="Select stock index"] {
+  padding-left: clamp(16px, 3vw, 8px) !important;
+  padding-right: clamp(10px, 3vw, 6px) !important;
+}
+
+/* Additional charcoal blue theme elements
+/* Additional charcoal blue theme elements */
+/* Additional charcoal blue theme elements */
+
+/* MOBILE HEADER FIX - PERFECT VERSION */
+@media (max-width: 768px) {
+
+  /* Header layout fix */
+  header {
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    flex-wrap: nowrap !important;
+    padding: clamp(12px, 2.5vw, 15px) !important;
+    /* Responsive padding */
+    gap: 8px !important;
+    height: auto !important;
+    min-height: 60px !important;
+    /* Minimum height rakho */
+  }
+
+  /* Heading - LEFT aligned */
+  header h1.calculator-main-heading {
+    font-size: clamp(14px, 3.5vw, 16px) !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    flex: 1;
+    margin: 0 !important;
+    padding: 0 !important;
+    text-align: left !important;
+    min-width: 0 !important;
+    align-self: center !important;
+  }
+
+  /* Admin container - RIGHT aligned */
+  .calculator-header-right {
+    display: flex !important;
+    justify-content: flex-end !important;
+    align-items: center !important;
+    flex-shrink: 0 !important;
+    width: auto !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  /* Admin button - RIGHT side */
+  .admin-link {
+    font-size: clamp(11px, 2vw, 13px) !important;
+    padding: clamp(6px, 1.2vw, 8px) clamp(10px, 2vw, 12px) !important;
+    white-space: nowrap !important;
+    margin: 0 !important;
+  }
+}
+
+
+/* NavChart specific mobile left shift */
+@media (max-width: 768px) {
+  .chart-container .recharts-wrapper {
+    margin-left: -40px !important;
+  }
+}
+
+/* Mobile - Right side void space fix */
+@media (max-width: 768px) {
+  .chart-container .recharts-wrapper {
+    padding-right: 0 !important;
+  }
+
+  .chart-container .recharts-surface {
+    width: 100% !important;
+  }
+
+  /* Grid lines ko right tak extend karo */
+  .recharts-cartesian-grid-horizontal line:last-child {
+    stroke-width: 1 !important;
+  }
+}
+
+/* ========== FINAL NUCLEAR FIX: REMOVE ALL CHARCOAL BLUE FROM GREEN/RED COLORS ========== */
+
+/* 1. TOTALLY REMOVE charcoal blue from .weight-green class */
+.weight-green {
+  background: #1F2433 !important;
+  color: white !important;
+}
+
+/* 2. SPECIFICALLY target dashboard stock cards */
+.dashboard .company-card .weight-green {
+  background: #16a34a !important;
+  color: white !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+/* 3. Current Price and LDCP labels - make them plain text */
+.dashboard .company-card .weight-green:nth-child(4),
+.dashboard .company-card .weight-green:nth-child(5) {
+  background: transparent !important;
+  color: #374151 !important;
+  border: none !important;
+  padding: 0 !important;
+  margin: 2px 0 !important;
+  font-weight: 500;
+  font-size: 14px !important;
+}
+
+/* 4. NUCLEAR OPTION: Remove #1F2433 (charcoal blue) from ALL elements in dashboard except headers */
+.dashboard *:not(.dashboard-header):not(.dashboard-header *):not(.fund-avatar):not(header):not(header *) {
+  background-color: initial !important;
+  background: initial !important;
+}
+
+/* 5. ULTIMATE GREEN/RED FORCE */
+div[style*="#16a34a"],
+div[style*="color: #16a34a"],
+span[style*="#16a34a"],
+span[style*="color: #16a34a"],
+.dashboard div[style*="#16a34a"],
+.dashboard div[style*="color: #16a34a"] {
+  color: #16a34a !important;
+  -webkit-text-fill-color: #16a34a !important;
+  background-color: transparent !important;
+  font-weight: 600 !important;
+}
+
+div[style*="#dc2626"],
+div[style*="color: #dc2626"],
+span[style*="#dc2626"],
+span[style*="color: #dc2626"],
+.dashboard div[style*="#dc2626"],
+.dashboard div[style*="color: #dc2626"] {
+  color: #dc2626 !important;
+  -webkit-text-fill-color: #dc2626 !important;
+  background-color: transparent !important;
+  font-weight: 600 !important;
+}
+
+/* 6. KILL any remaining charcoal blue styles */
+[style*="#1F2433"]:not(.dashboard-header):not(.dashboard-header *):not(header):not(header *):not(.fund-avatar) {
+  background: initial !important;
+  color: initial !important;
+  border-color: initial !important;
+}
+
+/* 7. DIRECT ELEMENT SELECTOR for price change box */
+.dashboard .company-card>div>div:last-child>div {
+  color: inherit !important;
+  -webkit-text-fill-color: inherit !important;
+}
+
+/* 8. If STILL not working, use JavaScript-style override */
+.company-card [style*="d1fae5"] div {
+  color: #16a34a !important;
+}
+
+.company-card [style*="fef2f2"] div {
+  color: #dc2626 !important;
+}
