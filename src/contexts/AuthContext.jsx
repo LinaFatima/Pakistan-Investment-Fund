@@ -1,5 +1,7 @@
 import React, { createContext, useState, useContext, useEffect } from 'react'
 
+import { clearAdminSession, getAdminToken } from '../services/adminApi'
+
 const AuthContext = createContext({})
 
 export const useAuth = () => useContext(AuthContext)
@@ -17,7 +19,7 @@ export const AuthProvider = ({ children }) => {
 
     console.log('Auth check - isAuthenticated:', isAuthenticated, 'username:', username)
 
-    if (isAuthenticated && username) {
+    if (isAuthenticated && username && getAdminToken()) {
       setUser({
         id: userId,
         username: username,
@@ -35,9 +37,7 @@ export const AuthProvider = ({ children }) => {
   }
 
   const logout = async () => {
-    localStorage.removeItem('admin_authenticated')
-    localStorage.removeItem('admin_username')
-    localStorage.removeItem('admin_id')
+    clearAdminSession()
     setUser(null)
     console.log('User logged out')
     return { error: null }

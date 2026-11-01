@@ -1,4 +1,5 @@
 import { supabase } from './supabase'
+import { adminPost } from './adminApi'
 
 export class NavCalculator {
   static async calculateNAV() {
@@ -15,22 +16,7 @@ export class NavCalculator {
 
   static async initializeSystem(initialNav) {
     try {
-      // NEW - Call Vercel API endpoint instead of Supabase function
-      const response = await fetch('/api/initialize', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          initial_nav: initialNav
-        })
-      })
-
-      const data = await response.json()
-
-      if (!response.ok || !data.success) {
-        throw new Error(data.error || 'Initialization failed')
-      }
+      const data = await adminPost('/api/initialize', { initial_nav: initialNav })
 
       return data
     } catch (error) {

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { supabase } from '../../services/supabase'
+import { adminPost } from '../../services/adminApi'
 
 const CompanyManagement = ({ companies, onUpdate, fundType }) => {
   const [showAddForm, setShowAddForm] = useState(false)
@@ -38,16 +39,13 @@ const CompanyManagement = ({ companies, onUpdate, fundType }) => {
   const handleAddCompany = async (e) => {
     e.preventDefault()
     try {
-      const { error } = await supabase
-        .from('companies')
-        .insert({
-          company_name: formData.company_name,
-          symbol: formData.symbol.toUpperCase(),
-          weight_percentage: parseFloat(formData.weight_percentage),
-          fund_type: fundType
-        })
-
-      if (error) throw error
+      await adminPost('/api/admin-companies', {
+        action: 'add',
+        company_name: formData.company_name,
+        symbol: formData.symbol,
+        weight_percentage: formData.weight_percentage,
+        fund_type: fundType
+      })
 
       setShowAddForm(false)
       setFormData({ company_name: '', symbol: '', weight_percentage: '' })
@@ -60,16 +58,13 @@ const CompanyManagement = ({ companies, onUpdate, fundType }) => {
   const handleEditCompany = async (e) => {
     e.preventDefault()
     try {
-      const { error } = await supabase
-        .from('companies')
-        .update({
-          company_name: formData.company_name,
-          symbol: formData.symbol.toUpperCase(),
-          weight_percentage: parseFloat(formData.weight_percentage)
-        })
-        .eq('id', editingCompany.id)
-
-      if (error) throw error
+      await adminPost('/api/admin-companies', {
+        action: 'update',
+        id: editingCompany.id,
+        company_name: formData.company_name,
+        symbol: formData.symbol,
+        weight_percentage: formData.weight_percentage
+      })
 
       setEditingCompany(null)
       setFormData({ company_name: '', symbol: '', weight_percentage: '' })
@@ -81,12 +76,7 @@ const CompanyManagement = ({ companies, onUpdate, fundType }) => {
 
   const handleToggleStatus = async (companyId, currentStatus) => {
     try {
-      const { error } = await supabase
-        .from('companies')
-        .update({ is_active: !currentStatus })
-        .eq('id', companyId)
-
-      if (error) throw error
+      await adminPost('/api/admin-companies', { action: 'toggle', id: companyId, is_active: !currentStatus })
       onUpdate()
     } catch (error) {
       alert('Error updating company status: ' + error.message)
@@ -97,12 +87,7 @@ const CompanyManagement = ({ companies, onUpdate, fundType }) => {
     if (!window.confirm('Are you sure you want to delete this company?')) return
 
     try {
-      const { error } = await supabase
-        .from('companies')
-        .delete()
-        .eq('id', companyId)
-
-      if (error) throw error
+      await adminPost('/api/admin-companies', { action: 'delete', id: companyId })
       onUpdate()
     } catch (error) {
       alert('Error deleting company: ' + error.message)

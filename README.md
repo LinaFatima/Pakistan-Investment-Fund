@@ -1,4 +1,4 @@
-# Meezan Fund NAV Calculator
+# Pakistan Investment Fund
 
 A full-stack web application that **calculates the Net Asset Value (NAV) of Pakistani Islamic mutual funds and ETFs in near real time**, stores a verified NAV every day at market close, and visualises the full history back to **2005**.
 
@@ -30,7 +30,7 @@ The project started with a **single fund** and was scaled up to **five** as the 
 
 ## Impact
 
-The system is in real use: my CEO uses the live and historical NAV views day to day, including as supporting data points for his talks and discussions on fund performance.
+The system is in real use: my CEO uses the live and historical NAV views day to day to benefit from it, including as supporting data points for his talks and discussions on fund performance.
 
 ---
 
@@ -94,7 +94,7 @@ Because each day's NAV depends on the previous day's NAV, and because the charts
 ## Project structure
 
 ```
-api/        Vercel serverless endpoints (initialize, sync-companies,
+api/        Vercel serverless endpoints (admin-login, admin-companies, initialize, sync-companies,
             auto-calculate, insert-daily-closes, nav-history, stocks/*)
 src/
   components/   Calculator, StockDetail, Admin/*, Common/* (charts, grids)
@@ -118,13 +118,23 @@ Required environment variables (see [.env.example](.env.example)):
 |---|---|
 | `VITE_SUPABASE_URL` | Your Supabase project URL |
 | `VITE_SUPABASE_ANON_KEY` | Supabase anon (public) key |
+| `SUPABASE_SERVICE_ROLE_KEY` | **Server only.** Used by the `/api` functions; never expose it to the browser (no `VITE_` prefix) |
+| `ADMIN_SESSION_SECRET` | **Server only.** Random 32+ character string used to sign admin session tokens |
 | `CRON_SECRET` | Bearer token required by the `/api/*` cron endpoints |
 
-You will need to create the Supabase tables yourself; no credentials or data are included in this repository.
+You will need to create the Supabase tables yourself; no credentials or data are included in this repository. After deploying, run [supabase/security.sql](supabase/security.sql) once in the Supabase SQL editor to enable Row Level Security.
 
 ## Deployment
 
 Deployed on Vercel. The `/api` folder runs as serverless functions, and the scheduled jobs call them with `Authorization: Bearer $CRON_SECRET`.
+
+## Security
+
+- **Row Level Security** is enabled on every table. Public market and NAV data is read-only for the browser; all writes happen server-side.
+- **Admin login** is handled by a serverless endpoint (`/api/admin-login`). Passwords are stored as salted `scrypt` hashes and the browser never queries the `users` table.
+- **Admin actions** (company management, fund initialisation) go through endpoints that require a signed, expiring session token.
+- **Scheduled jobs** are protected with a bearer secret, and the server uses the Supabase `service_role` key, which is never sent to the browser.
+- Secrets live only in environment variables and are excluded from the repo via `.gitignore`.
 
 ## Author
 

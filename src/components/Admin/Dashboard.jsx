@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { supabase } from '../../services/supabase'
+import { clearAdminSession } from '../../services/adminApi'
 import CompanyManagement from './CompanyManagement'
 import { autoFormatDate, formatPakistanTimeOnly } from '../../utils/dateUtils'
 import Header from "./Header";
@@ -439,9 +440,7 @@ const fetchWeeklyPriceHistory = async (symbol, fundType) => {
   }
 
   const handleLogout = () => {
-    localStorage.removeItem('admin_authenticated')
-    localStorage.removeItem('admin_username')
-    localStorage.removeItem('admin_id')
+    clearAdminSession()
     window.location.href = '/admin/login'
   }
 

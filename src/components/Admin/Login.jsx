@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useAuth } from '../../contexts/AuthContext'
-import { supabase } from '../../services/supabase'
 
 const Login = () => {
   const [username, setUsername] = useState('')
@@ -18,41 +17,26 @@ const Login = () => {
     setError('')
 
     try {
-      console.log('Login attempt for username:', username)
+      const response = await fetch('/api/admin-login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ username, password })
+      })
+      const data = await response.json().catch(() => ({}))
 
-      // Query the users table in Supabase
-      const { data: user, error: queryError } = await supabase
-        .from('users')
-        .select('id, username, password')
-        .eq('username', username)
-        .single()
-
-      console.log('Query result:', user)
-      console.log('Query error:', queryError)
-
-      if (queryError || !user) {
-        console.log('No user found or query error')
-        setError('Invalid username or password')
+      if (!response.ok || !data.success) {
+        setError(data.error || 'Invalid username or password')
         setLoading(false)
         return
       }
 
-      // Simple password check - works with plain text passwords
-      if (password === user.password) {
-        console.log('Password matches, setting localStorage and navigating...')
+      localStorage.setItem('admin_authenticated', 'true')
+      localStorage.setItem('admin_username', data.user.username)
+      localStorage.setItem('admin_id', data.user.id)
+      localStorage.setItem('admin_token', data.token)
+      localStorage.setItem('admin_expires', String(data.expiresAt))
 
-        localStorage.setItem('admin_authenticated', 'true')
-        localStorage.setItem('admin_username', user.username)
-        localStorage.setItem('admin_id', user.id)
-
-        console.log('LocalStorage set, navigating to dashboard...')
-        // FORCE redirect - this will work reliably
-        window.location.href = '/admin/dashboard'
-
-      } else {
-        console.log('Password does not match')
-        setError('Invalid username or password')
-      }
+      window.location.href = '/admin/dashboard'
 
     } catch (err) {
       console.error('Login error:', err)

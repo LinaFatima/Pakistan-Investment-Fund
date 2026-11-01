@@ -1,10 +1,13 @@
 import { supabase } from './supabaseClient.js'
 import { PSXApiHandler } from './psxApiHandler.js'
+import { requireAdmin } from './_adminAuth.js'
 
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
     return res.status(405).json({ success: false, error: 'Method not allowed' })
   }
+
+  if (!requireAdmin(req, res)) return
 
   try {
     const { initial_nav } = req.body
